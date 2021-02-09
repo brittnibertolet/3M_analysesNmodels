@@ -139,7 +139,7 @@ simData=simulateModel1()
 # merge with data
 sim=merge(simData, gc, by=c("lakeID", "treatment", "incub_days", "rep"))
 
-ggplot(sim[sim$lakeID!="PE",], aes(x=incub_days, y=sim1CH4_umol))+
+ggplot(sim, aes(x=incub_days, y=sim1CH4_umol))+
   geom_line(aes(group=rep),color="red")+
   facet_grid(treatment~lakeID)+
   geom_point(aes(x=incub_days, y=totalCH4_umol), color="black")+
