@@ -1,6 +1,6 @@
 # Lake specific model 
-## 1st-order reactions from bulk OM to acetate and carbon dioxide to CH4 
-## 7 parameters
+## 1st-order reactions from bulk OM and algae to acetate and carbon dioxide to CH4 
+## 9 parameters
 lakespecific.nll = function(param=parameters, data=ydata){
   
   # parameters are estimate across all lakes, so not inside the for loop
@@ -39,7 +39,6 @@ lakespecific.nll = function(param=parameters, data=ydata){
   # initial observation of y
   yhat[1,]=t(m[[1]][1,-1:-2]) 
   
-  
   # chat
   chat=matrix(NA, ncol=12, nrow=nrow(c[[1]]))
   colnames(chat)=colnames(c[[1]])[-1:-2]
@@ -51,7 +50,6 @@ lakespecific.nll = function(param=parameters, data=ydata){
   colnames(ahat)=colnames(a[[1]])[-1]
   # initial observation of a
   ahat[1,]=ydata$init.a$acetate_umol[ydata$init.a$lakeID==lakei]
-  
   
   # simulate process model 
   tp=nrow(yhat)
